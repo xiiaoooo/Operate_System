@@ -107,6 +107,18 @@ void interrupt_handler(struct trapframe *tf) {
             // directly.
             // cprintf("Supervisor timer interrupt\n");
              /* LAB1 EXERCISE2   YOUR CODE :  */
+            clock_set_next_event();
+            ticks++;
+            if(ticks == 100)
+            {
+                print_ticks();
+                ticks = 0;
+                num++;
+            }
+            if(num == 10)
+            {
+                sbi_shutdown();
+            }
             /*(1)设置下次时钟中断- clock_set_next_event()
              *(2)计数器（ticks）加一
              *(3)当计数器加到100的时候，我们会输出一个`100ticks`表示我们触发了100次时钟中断，同时打印次数（num）加一
