@@ -97,6 +97,7 @@ Breakpoint 1, kern_entry () at kern/init/entry.S:7
 
 - 加电，复位，从`0x1000`处开始执行，之后跳转到`0x80000000`
 - 启动作为bootloader的OpenSBI，跳转到`0x80200000`，运行`kern_entry`，后进入`kern_init`继续执行 
+
 运行`make gdb`之前需要先运行`make debug`，运行`make debug`后会调用命令构建程序，之后将调试其构建的二进制文件，否则将会报错：
 
 ```
